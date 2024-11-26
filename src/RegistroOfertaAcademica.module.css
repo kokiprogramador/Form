@@ -3,7 +3,7 @@
 	--background: #ECECEC;
 	--text: #455459;
 }
-.Container{
+.GlobalCTN{
 	width: 40em;
 	height: 100%;
 }
@@ -35,12 +35,11 @@
 	padding: 0.6em;
 	border: none;
 }
-.Form_Input_GU{
-	font-size: 0.9em;
-	font-family: Roboto;
-	width: 20em;	height: 2.3em;
-	padding: 0.6em;
-	border: none;
+.Form_Img{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	margin: 0.5em 0 0 -2em;
 }
 .Form_Img{
 	position: absolute;
@@ -75,7 +74,6 @@
 .Button_Group{
 	display: flex;
 	margin: 1.6em 0 0 0;
-	gap: 1em;
 }
 .Button{
 	color: var(--text);

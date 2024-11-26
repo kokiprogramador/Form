@@ -101,7 +101,6 @@ const RegistroUsuario = () => {
         required
       />
     </div>
-
     <div className={styles.Form_Group}>
       <label className={styles.Form_Label} htmlFor="etnia"></label>
       <input
@@ -146,19 +145,21 @@ const RegistroUsuario = () => {
     <div className={styles.Form_Group}>
       <input
       	placeholder = "G.V"
-        className={styles.Form_Input}
+        className={styles.Form_Input_GU}
         type="text"
         id="gV"
         name="gV"
         value={formData.gV}
         onChange={handleChange}
       />
+      <img src = "./FS_Name.svg" className = {styles.Form_Img}/>
     </div>
 
-    <div className={styles.Form_Group}>
+    <div className = {styles.Select}>
+    	<div className={styles.Select_Group}>
       <label className={styles.Form_Label} htmlFor="status"></label>
       <select
-        className={styles.Form_Input}
+        className={styles.Select_Input}
         id="status"
         name="status"
         value={formData.status}
@@ -169,11 +170,12 @@ const RegistroUsuario = () => {
         <option value="activo">Activo</option>
         <option value="inactivo">Inactivo</option>
       </select>
+      <img src = "./Status.svg" className = {styles.Select_Img}/>
     </div>
-    <div className={styles.Form_Group}>
+    <div className={styles.Select_Group}>
       <label className={styles.Form_Label} htmlFor="sexo"></label>
       <select
-        className={styles.Form_Input}
+        className={styles.Select_Input}
         id="sexo"
         name="sexo"
         value={formData.sexo}
@@ -185,12 +187,13 @@ const RegistroUsuario = () => {
         <option value="femenino">Femenino</option>
         <option value="otro">Otro</option>
       </select>
+    	<img src = "./Gender.svg" className = {styles.Select_Img}/>
     </div>
 
-    <div className={styles.Form_Group}>
+    <div className={styles.Select_Group}>
       <label className={styles.Form_Label} htmlFor="discapacidad"></label>
       <select
-        className={styles.Form_Input}
+        className={styles.Select_Input}
         id="discapacidad"
         name="discapacidad"
         value={formData.discapacidad}
@@ -201,10 +204,12 @@ const RegistroUsuario = () => {
         <option value="no">No</option>
         <option value="si">Sí</option>
       </select>
+      <img src = "./Disability.svg" className = {styles.Select_Img}/>
+      </div>
     </div>
-    <div>
-      <button type="submit">Enviar</button>
-      <button type="button" onClick={handleBack}>Volver</button>
+    <div className = {styles.Button_Group}>
+      <button className = {styles.Button} type="submit">Enviar</button>
+      <button className = {styles.Button} type="button" onClick={handleBack}>Volver</button>
     </div>
   </form>
 </div>
