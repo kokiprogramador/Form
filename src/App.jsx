@@ -8,8 +8,7 @@ function App() {
   return (
     <>
     <div className = {styles.Ctn}>
-      <RegistroUsuario />
-      <RegistroOfertaAcademica />      
+      <RegistroUsuario />     
     </div>
     </>
   )

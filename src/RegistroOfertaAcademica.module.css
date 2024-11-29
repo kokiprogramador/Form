@@ -41,12 +41,6 @@
 	height: 30px;
 	margin: 0.5em 0 0 -2em;
 }
-.Form_Img{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	margin: 0.5em 0 0 -2em;
-}
 .Select{
 	display: flex;
 	width: 100%;
@@ -85,4 +79,11 @@
 }
 .Button:hover{
 	cursor: pointer;
+}
+.File{
+	border: none;
+}
+.File_Input{
+	border-radius: 20em;
+	background: white;
 }

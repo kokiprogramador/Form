@@ -1,11 +1,18 @@
+import DatePicker from 'react-datepicker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faIdCardClip, faUser, faEnvelope, faPhone, faMobileScreenButton } from '@fortawesome/free-solid-svg-icons';
+import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
 import styles from './RegistroUsuario.module.css'
 
 const RegistroUsuario = () => {
+  const [startDate, setStartDate] = useState(new Date())
   const [formData, setFormData] = useState({
     cedula: '',
-    nombres: '',
-    apellidos: '',
+    primerapellido: '',
+    segundoapellido: '',
+    primernombre: '',
+    segundonombre: '',
     correo: '',
     fechaNacimiento: '',
     sexo: '',
@@ -14,7 +21,8 @@ const RegistroUsuario = () => {
     telefonoL: '',
     status: '',
     telefonoM: '',
-    gV: '',
+    gu: '',
+    img: '',
   });
 
   const handleChange = (e) => {
@@ -41,32 +49,20 @@ const RegistroUsuario = () => {
     <div className={styles.Form_Group}>
       <input
       	placeholder = "Cedula"
+        maxlength = "8"
         className={styles.Form_Input}
-        type="text"
+        type="number"
         id="cedula"
         name="cedula"
         value={formData.cedula}
         onChange={handleChange}
         required
       />
-     	<img src = "./ID.svg" className = {styles.Form_Img}/>
+     <FontAwesomeIcon icon={faIdCardClip} className={styles.Form_Img} />
     </div>
     <div className={styles.Form_Group}>
       <input
-      	placeholder = "Nombres"
-        className={styles.Form_Input}
-        type="text"
-        id="nombres"
-        name="nombres"
-        value={formData.nombres}
-        onChange={handleChange}
-        required
-      />
-      <img src = "./FS_Name.svg" className = {styles.Form_Img}/>
-    </div>
-    <div className={styles.Form_Group}>
-      <input
-      	placeholder = "Apellidos"
+      	placeholder = "Primer apellido"
         className={styles.Form_Input}
         type="text"
         id="apellidos"
@@ -75,7 +71,46 @@ const RegistroUsuario = () => {
         onChange={handleChange}
         required
       />
-      <img src = "./FS_Name.svg" className = {styles.Form_Img}/>
+      <FontAwesomeIcon icon={faUser} className = {styles.Form_Img}/>
+    </div>
+    <div className={styles.Form_Group}>
+      <input
+        placeholder = "Segundo apellido"
+        className={styles.Form_Input}
+        type="text"
+        id="apellidos"
+        name="apellidos"
+        value={formData.apellidos}
+        onChange={handleChange}
+        required
+      />
+      <FontAwesomeIcon icon={faUser} className = {styles.Form_Img}/>
+    </div>
+    <div className={styles.Form_Group}>
+      <input
+      	placeholder = "Primer nombre"
+        className={styles.Form_Input}
+        type="text"
+        id="nombres"
+        name="nombres"
+        value={formData.nombres}
+        onChange={handleChange}
+        required
+      />
+      <FontAwesomeIcon icon={faUser} className = {styles.Form_Img}/>
+    </div>
+    <div className={styles.Form_Group}>
+      <input
+        placeholder = "Segundo nombre"
+        className={styles.Form_Input}
+        type="text"
+        id="nombres"
+        name="nombres"
+        value={formData.nombres}
+        onChange={handleChange}
+        required
+      />
+      <FontAwesomeIcon icon={faUser} className = {styles.Form_Img}/>
     </div>
     <div className={styles.Form_Group}>
       <input
@@ -88,33 +123,21 @@ const RegistroUsuario = () => {
         onChange={handleChange}
         required
       />
-     <img src = "./Email.svg" className = {styles.Form_Img}/>
+     <FontAwesomeIcon icon = {faEnvelope} className = {styles.Form_Img}/>
     </div>
     <div className={styles.Form_Group}>
-      <input
-        className={styles.Form_Input}
-        type="date"
-        id="fechaNacimiento"
-        name="fechaNacimiento"
-        value={formData.fechaNacimiento}
-        onChange={handleChange}
-        required
+        <label className = {styles.Date_Label}>
+          Fecha nacimiento
+        </label>
+        <DatePicker
+          className = {styles.Date_Input}
+          name="fechaNacimiento"
+          id="fechaNacimiento"
+          value={setFormData.fechaNacimiento}
+          selected = {startDate}
+          onChange = {(date) => setStartDate(date)}
       />
     </div>
-    <div className={styles.Form_Group}>
-      <label className={styles.Form_Label} htmlFor="etnia"></label>
-      <input
-      	placeholder = "Etnia"
-        className={styles.Form_Input}
-        type="text"
-        id="etnia"
-        name="etnia"
-        value={formData.etnia}
-        onChange={handleChange}
-      />
-      <img src = "./Ethnity.svg" className = {styles.Form_Img}/>
-    </div>
-
     <div className={styles.Form_Group}>
       <input
       	placeholder = "Telefono Local"
@@ -122,13 +145,12 @@ const RegistroUsuario = () => {
         type="tel"
         id="telefonoL"
         name="telefonoL"
+        maxlength="11"
         value={formData.telefonoL}
         onChange={handleChange}
       />
-      <img src = "./LocalPhone.svg" className = {styles.Form_Img}/>
+      <FontAwesomeIcon icon={faPhone} className = {styles.Form_Img}/>
     </div>
-
-
     <div className={styles.Form_Group}>
       <input
       	placeholder = "Teléfono Movil"
@@ -136,44 +158,62 @@ const RegistroUsuario = () => {
         type="tel"
         id="telefonoM"
         name="telefonoM"
+        maxlength="11"
         value={formData.telefonoM}
         onChange={handleChange}
       />
-     	<img src = "./Iphone.svg" className = {styles.Form_Img}/>
+     	<FontAwesomeIcon icon={faMobileScreenButton} className = {styles.Form_Img}/>
     </div>
-
-    <div className={styles.Form_Group}>
-      <input
-      	placeholder = "G.V"
-        className={styles.Form_Input_GU}
-        type="text"
-        id="gV"
-        name="gV"
-        value={formData.gV}
-        onChange={handleChange}
+  <div className = {styles.Radius}>
+    <label className={styles.Radius_Label}>Status</label>
+    <label className = {styles.Radius_Label} >Act.
+      <input 
+       type = "radio"
+       id="status"
+       name="status"
+       value={formData.status}
       />
-      <img src = "./FS_Name.svg" className = {styles.Form_Img}/>
-    </div>
-
-    <div className = {styles.Select}>
-    	<div className={styles.Select_Group}>
-      <label className={styles.Form_Label} htmlFor="status"></label>
+     </label>
+     <label className = {styles.Radius_Label}>Inact.
+      <input
+       type = "radio"
+       id="status"
+       name="status"
+       value={formData.status}
+      />
+    </label>
+  </div>
+  <div className = {styles.Select}>
+    <div className={styles.Select_Group}>
       <select
         className={styles.Select_Input}
-        id="status"
-        name="status"
-        value={formData.status}
+        id="etnia"
+        name="etnia"
+        value={formData.etnia}
         onChange={handleChange}
         required
       >
-        <option value="">Status</option>
-        <option value="activo">Activo</option>
-        <option value="inactivo">Inactivo</option>
+        <option value="">Etnía</option>
+        <option value={formData.etnia}>Wayuu</option>
+        <option value={formData.etnia}>Afroamericano</option>
+        <option value={formData.etnia}>Otro</option>
       </select>
-      <img src = "./Status.svg" className = {styles.Select_Img}/>
     </div>
     <div className={styles.Select_Group}>
-      <label className={styles.Form_Label} htmlFor="sexo"></label>
+      <select
+        className={styles.Select_Input}
+        id="discapacidad"
+        name="discapacidad"
+        value={formData.discapacidad}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Discapacidad</option>
+        <option value="Sí">No</option>
+        <option value="No">Sí</option>
+      </select>
+    </div>
+    <div className = {styles.Select_Group}>
       <select
         className={styles.Select_Input}
         id="sexo"
@@ -185,32 +225,40 @@ const RegistroUsuario = () => {
         <option value="">Sexo</option>
         <option value="masculino">Masculino</option>
         <option value="femenino">Femenino</option>
-        <option value="otro">Otro</option>
       </select>
-    	<img src = "./Gender.svg" className = {styles.Select_Img}/>
-    </div>
-
-    <div className={styles.Select_Group}>
-      <label className={styles.Form_Label} htmlFor="discapacidad"></label>
+  </div>
+  <div className = {styles.Select_Group}>
       <select
         className={styles.Select_Input}
-        id="discapacidad"
-        name="discapacidad"
-        value={formData.discapacidad}
+        id="gu"
+        name="gu"
+        value={formData.gu}
         onChange={handleChange}
         required
       >
-        <option value="">Discapacidad</option>
-        <option value="no">No</option>
-        <option value="si">Sí</option>
+        <option value="">Grupo de usuarios</option>
+        <option value="admin<">Admin</option>
+        <option value="superadmin">SuperAdmin</option>
+        <option value="operador">Operador</option>
+        <option value="estudiante">Estudiante</option>
       </select>
-      <img src = "./Disability.svg" className = {styles.Select_Img}/>
-      </div>
+  </div>
+    <div className = {styles.File}>
+      <input 
+        className = {styles.File_Input}
+        type = "file"
+        id = "img"
+        name = "img"
+        value = {formData.img}
+        onChange = {handleChange}
+        required
+      />
     </div>
     <div className = {styles.Button_Group}>
       <button className = {styles.Button} type="submit">Enviar</button>
       <button className = {styles.Button} type="button" onClick={handleBack}>Volver</button>
     </div>
+  </div>
   </form>
 </div>
   );

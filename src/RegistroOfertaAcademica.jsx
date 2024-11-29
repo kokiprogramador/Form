@@ -6,9 +6,11 @@ const RegistroOfertaAcademica = () => {
     semestre: '',
     numero: '',
     codigo: '',
+    hp: '',
+    ht: '',
+    htotal: '',
     asignatura: '',
     uc: '',
-    condicion: '',
     prelaciones: ''
   });
 
@@ -42,10 +44,34 @@ const RegistroOfertaAcademica = () => {
         </div>
         <div>
           <input
-            placeholder="Número"
+            placeholder="Horas prácticas"
             type="number"
-            name="numero"
-            value={oferta.numero}
+            id = "hora practica"
+            name="hora practica"
+            value={oferta.hp}
+            onChange={handleChange}
+            required
+            className={styles.Form_Input}
+          />
+          <img src="./Number.svg" className={styles.Form_Img} />
+        </div>
+        <div>
+          <input
+            placeholder="Horas teoricas"
+            type="number"
+            name="hora teorica"
+            value={oferta.ht}
+            onChange={handleChange}
+            className={styles.Form_Input}
+          />
+          <img src="./Number.svg" className={styles.Form_Img} />
+        </div>
+        <div>
+          <input
+            placeholder="Horas semanales"
+            type="number"
+            name="hora total"
+            value={oferta.htotal}
             onChange={handleChange}
             className={styles.Form_Input}
           />
@@ -83,17 +109,6 @@ const RegistroOfertaAcademica = () => {
             className={styles.Form_Input}
           />
           <img src="./Credit.svg" className={styles.Form_Img} />
-        </div>
-        <div>
-          <input
-            placeholder="Condición"
-            type="text"
-            name="condicion"
-            value={oferta.condicion}
-            onChange={handleChange}
-            className={styles.Form_Input}
-          />
-          <img src="./Condition.svg" className={styles.Form_Img} />
         </div>
         <div className={styles.Select}>
           <div className={styles.Select_Group}>

@@ -1,5 +1,5 @@
 .Ctn{
 	display: flex;
+	justify-content: center;
 	gap: 10em;
-	margin-bottom: -1em;
 }
